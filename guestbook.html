@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guestbook - Juego de Libros ♡</title>
+    <style>
+        /* Mantenemos el estilo estético de tu página principal */
+        body {
+            background-image: url('◌ 🖇️ ⊹ ⁺ 🐇⋅ִֹ𓂋 ᰔᩚ.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            color: #7a8264;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .game-box {
+            background-color: #fcfce2;
+            border: 4px solid #b8d08d;
+            padding: 30px;
+            border-radius: 2px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #f99fc9;
+            text-shadow: 1px 1px 0px #fff;
+            margin-top: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .clue-container {
+            background-color: #e6f0d1;
+            border: 2px dashed #b8d08d;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: 2px solid #b8d08d;
+            border-radius: 4px;
+            font-family: 'Comic Sans MS', sans-serif;
+            font-size: 1rem;
+            color: #7a8264;
+            margin-bottom: 15px;
+            background-color: #fff;
+        }
+
+        button {
+            background-color: #f99fc9;
+            color: white;
+            border: 2px solid #f78bb1;
+            padding: 10px 20px;
+            font-family: 'Comic Sans MS', sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.1s;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #f78bb1;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #feedback {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            min-height: 25px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #9bc2e0;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .back-link:hover {
+            color: #7aa5c7;
+        }
+        
+        .progress {
+            font-size: 0.9rem;
+            color: #f7bc7c;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-box">
+        <h1>📖 ¡Adivina el Libro! 📖</h1>
+        <p>¡Bienvenido a mi rincón de lectura! Lee la pista e intenta adivinar de qué libro estoy hablando.</p>
+        
+        <div class="progress" id="progressText">Libro 1 de 9</div>
+        
+        <div class="clue-container" id="clueText">
+            </div>
+
+        <input type="text" id="answerInput" placeholder="Escribe el título aquí..." autocomplete="off">
+        <br>
+        <button onclick="checkAnswer()">¡Adivinar!</button>
+        <button onclick="nextBook()" id="nextBtn" style="display:none; background-color: #9be09b; border-color: #7ac47a;">Siguiente Libro ➡️</button>
+
+        <div id="feedback"></div>
+
+        <a href="index.html" class="back-link">⬅️ Volver a la página principal</a>
+    </div>
+
+    <script>
+        // Lista de libros y sus pistas
+        const books = [
+            { clue: "Un grupo de jóvenes amnésicos está atrapado en un área rodeada por un gigantesco laberinto lleno de monstruos.", answer: "maze runner" },
+            { clue: "Un aviador se estrella en el desierto y conoce a un niño de otro planeta que le enseña que 'lo esencial es invisible a los ojos'.", answer: "el principito" },
+            { clue: "Un chico con dislexia descubre que en realidad es el hijo de Poseidón y es enviado al Campamento Mestizo.", answer: "percy jackson" },
+            { clue: "Una mañana, Gregorio Samsa se despierta y descubre que se ha transformado en un insecto gigante.", answer: "la metamorfosis" },
+            { clue: "Hazel y Gus, dos adolescentes que se conocen en un grupo de apoyo, se enamoran y viajan a Ámsterdam para conocer a un autor.", answer: "bajo la misma estrella" },
+            { clue: "El niño que sobrevivió. Tiene una cicatriz en forma de rayo y recibe una carta para ir a Hogwarts.", answer: "harry potter" },
+            { clue: "Recopilación de relatos de terror y misterio escritos por un autor estadounidense. Incluye obras como 'El gato negro' o 'El corazón delator'.", answer: "cuentos de edgar allan poe" },
+            { clue: "Clary Fray descubre en Nueva York un mundo oculto de ángeles, demonios y vampiros con tatuajes mágicos llamados runas.", answer: "cazadores de sombras" },
+            { clue: "Famoso libro de parábolas, anécdotas y reflexiones sobre liderazgo que nos enseña a no buscar excusas.", answer: "la culpa es de la vaca" }
+        ];
+
+        let currentIndex = 0;
+
+        const clueElement = document.getElementById('clueText');
+        const inputElement = document.getElementById('answerInput');
+        const feedbackElement = document.getElementById('feedback');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressElement = document.getElementById('progressText');
+
+        // Función para normalizar texto (quitar acentos y poner en minúsculas)
+        function normalizeText(text) {
+            return text.toLowerCase()
+                       .normalize("NFD")
+                       .replace(/[\u0300-\u036f]/g, "")
+                       .trim();
+        }
+
+        // Cargar la primera pista
+        function loadClue() {
+            clueElement.textContent = books[currentIndex].clue;
+            inputElement.value = '';
+            feedbackElement.textContent = '';
+            nextBtn.style.display = 'none';
+            progressElement.textContent = `Libro ${currentIndex + 1} de ${books.length}`;
+            inputElement.focus();
+        }
+
+        // Comprobar la respuesta
+        function checkAnswer() {
+            const userAnswer = normalizeText(inputElement.value);
+            const correctAnswer = normalizeText(books[currentIndex].answer);
+
+            // Verificamos si la respuesta del usuario está incluida en la correcta para ser amigables con errores de tipeo
+            if (userAnswer === correctAnswer || (userAnswer.length > 4 && correctAnswer.includes(userAnswer))) {
+                feedbackElement.style.color = "#9be09b"; // Verde
+                feedbackElement.textContent = "¡CORRECTO! ✨ El libro es: " + books[currentIndex].answer.toUpperCase();
+                nextBtn.style.display = "inline-block";
+            } else {
+                feedbackElement.style.color = "#f99fc9"; // Rosa/Rojo
+                feedbackElement.textContent = "Mmm... esa no es. ¡Inténtalo de nuevo! 💭";
+            }
+        }
+
+        // Pasar al siguiente libro
+        function nextBook() {
+            currentIndex++;
+            if (currentIndex < books.length) {
+                loadClue();
+            } else {
+                clueElement.innerHTML = "<strong>¡Felicidades! 🎉 Has adivinado todos los libros.</strong>";
+                inputElement.style.display = 'none';
+                document.querySelector('button[onclick="checkAnswer()"]').style.display = 'none';
+                nextBtn.style.display = 'none';
+                feedbackElement.textContent = "¡Eres un experto lector!";
+                feedbackElement.style.color = "#f7bc7c";
+            }
+        }
+
+        // Permitir usar la tecla Enter para responder
+        inputElement.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                if (nextBtn.style.display === "inline-block") {
+                    nextBook();
+                } else {
+                    checkAnswer();
+                }
+            }
+        });
+
+        // Iniciar el juego
+        loadClue();
+    </script>
+</body>
+</html>

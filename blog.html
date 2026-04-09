@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Blog Vintage ♡</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap');
+
+        /* Fondo con la imagen de degradado Lime and Pink */
+        body {
+            background-image: url('Lime and Pink Gradient Wallpaper.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Crimson Text', serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Special Elite', cursive;
+            color: #5d634a;
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 15px 40px;
+            border-radius: 10px;
+            border: 2px solid #5d634a;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Contenedor del Blog */
+        .blog-container {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Estilo de Nota de Libro Antiguo */
+        .blog-entry {
+            background-color: #fdfaf1;
+            /* Color papel antiguo */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 100% 1.5em;
+            /* Rayado sutil */
+            padding: 30px;
+            border-radius: 2px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+                -1px -1px 2px rgba(255, 255, 255, 0.5);
+            border-left: 15px solid #d4c5a9;
+            /* Simula el lomo del libro */
+            position: relative;
+            transform: rotate(-0.5deg);
+            transition: transform 0.3s;
+        }
+
+        .blog-entry:nth-child(even) {
+            transform: rotate(0.8deg);
+            border-left: none;
+            border-right: 15px solid #d4c5a9;
+        }
+
+        .blog-entry:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .entry-date {
+            font-family: 'Special Elite', cursive;
+            font-size: 0.9rem;
+            color: #8b7d6b;
+            text-align: right;
+            border-bottom: 1px solid #d4c5a9;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+        }
+
+        .entry-title {
+            font-size: 1.8rem;
+            color: #4a3f35;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .entry-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #554a3d;
+            text-align: justify;
+        }
+
+        /* Decoración tipo sello o mancha */
+        .entry-stamp {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            opacity: 0.2;
+            font-size: 3rem;
+            pointer-events: none;
+        }
+
+        .back-link {
+            margin-top: 60px;
+            background-color: #5d634a;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .back-link:hover {
+            background-color: transparent;
+            color: #5d634a;
+            border: 2px solid #5d634a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📓 Diario de Memorias</h1>
+
+    <div class="blog-container">
+
+        <!-- Entrada 1 -->
+        <article class="blog-entry">
+            <div class="entry-date">7 de Abril, 2024</div>
+            <h2 class="entry-title">El comienzo de mi jardín digital</h2>
+            <p class="entry-content">Hoy decidí que este pequeño espacio en la web sería mi refugio. Entre códigos y
+                colores pasteles, voy construyendo algo que se siente verdaderamente mío.</p>
+            <div class="entry-stamp">🌿</div>
+        </article>
+
+        <!-- Entrada 2 -->
+        <article class="blog-entry">
+            <div class="entry-date">10 de Abril, 2024</div>
+            <h2 class="entry-title">Coleccionando rocas y sueños</h2>
+            <p class="entry-content">¿Alguna vez han sentido que una simple piedra tiene una historia? Mi mascota Rocky
+                me mira mientras escribo esto. Hay magia en lo cotidiano.</p>
+            <div class="entry-stamp">💎</div>
+        </article>
+
+        <!-- Entrada 3 -->
+        <article class="blog-entry">
+            <div class="entry-date">15 de Abril, 2024</div>
+            <h2 class="entry-title">Ecos de los Beatles</h2>
+            <p class="entry-content">Escuchando viejos vinilos. La música de antes tiene un peso diferente, como si cada
+                nota estuviera cargada de nostalgia y sol de tarde.</p>
+            <div class="entry-stamp">🎸</div>
+        </article>
+
+        <!-- Entrada 4 -->
+        <article class="blog-entry">
+            <div class="entry-date">20 de Abril, 2024</div>
+            <h2 class="entry-title">Paseo por el Santuario</h2>
+            <p class="entry-content">Cerrar los ojos y sentir el viento de Italia, aunque esté a kilómetros de
+                distancia. El santuario es mi mente encontrando paz.</p>
+            <div class="entry-stamp">🏛️</div>
+        </article>
+
+        <!-- Entrada 5 -->
+        <article class="blog-entry">
+            <div class="entry-date">22 de Abril, 2024</div>
+            <h2 class="entry-title">Estética y luz</h2>
+            <p class="entry-content">He estado editando fotos con cámaras digitales viejas. Ese grano en la imagen hace
+                que todo parezca un recuerdo borroso pero feliz.</p>
+            <div class="entry-stamp">📸</div>
+        </article>
+
+        <!-- Entrada 6 -->
+        <article class="blog-entry">
+            <div class="entry-date">25 de Abril, 2024</div>
+            <h2 class="entry-title">Lluvia de margaritas</h2>
+            <p class="entry-content">Las flores frescas en mi escritorio alegran incluso los días más grises. La
+                naturaleza siempre sabe cómo curarnos.</p>
+            <div class="entry-stamp">🌼</div>
+        </article>
+
+        <!-- Entrada 7 -->
+        <article class="blog-entry">
+            <div class="entry-date">28 de Abril, 2024</div>
+            <h2 class="entry-title">Personajes que inspiran</h2>
+            <p class="entry-content">A veces me identifico tanto con los personajes que guardo en mis cartas. Son
+                fragmentos de lo que soy o de lo que aspiro a ser.</p>
+            <div class="entry-stamp">✨</div>
+        </article>
+
+        <!-- Entrada 8 -->
+        <article class="blog-entry">
+            <div class="entry-date">2 de Mayo, 2024</div>
+            <h2 class="entry-title">Café y códigos</h2>
+            <p class="entry-content">Pasé horas ajustando el diseño del iPhone. Me gusta que mi web se sienta como un
+                objeto que puedes tocar y explorar.</p>
+            <div class="entry-stamp">☕</div>
+        </article>
+
+        <!-- Entrada 9 -->
+        <article class="blog-entry">
+            <div class="entry-date">5 de Mayo, 2024</div>
+            <h2 class="entry-title">Nostalgia verde matcha</h2>
+            <p class="entry-content">Hay una combinación de colores que me da paz. El rosa suave y el verde matcha son,
+                sin duda, mis favoritos de esta temporada.</p>
+            <div class="entry-stamp">🍵</div>
+        </article>
+
+        <!-- Entrada 10 -->
+        <article class="blog-entry">
+            <div class="entry-date">7 de Mayo, 2024</div>
+            <h2 class="entry-title">Continuará...</h2>
+            <p class="entry-content">Este blog es solo el inicio. Cada página de este libro digital se llenará con más
+                fragmentos de mi mundo. Gracias por leerme.</p>
+            <div class="entry-stamp">🖋️</div>
+        </article>
+
+    </div>
+
+    <a href="index.html" class="back-link">⬅ Volver al Inicio</a>
+
+</body>
+
+</html>

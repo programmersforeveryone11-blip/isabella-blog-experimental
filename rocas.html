@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Colección de Rocas ♡</title>
+    <style>
+        /* Fondo con la imagen de margaritas (More daisies.jpg) */
+        body {
+            background-image: url('More daisies.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #5d634a;
+        }
+
+        h1 {
+            color: #fff;
+            background-color: #f7bc7c; /* Naranja pastel para las rocas */
+            padding: 10px 40px;
+            border-radius: 50px;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 0px #e6a45e;
+            margin-bottom: 50px;
+        }
+
+        .collection-container {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Sección de pareja de rocas */
+        .rock-pair-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .images-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .rock-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border: 6px solid #fff;
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-color: #fcfce2;
+        }
+
+        /* Cuadro de descripción horizontal con fondo de estrellas */
+        .description-box {
+            width: 100%;
+            max-width: 600px;
+            background-color: #f99fc9;
+            background-image: url('☆.jpg'); /* Fondo de estrellitas */
+            background-size: 150px;
+            border: 4px solid #fff;
+            border-radius: 15px;
+            padding: 15px 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Capa para que el texto sea legible sobre las estrellas */
+        .description-box p {
+            background-color: rgba(249, 159, 201, 0.85);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .back-link {
+            margin-top: 60px;
+            background-color: #fff;
+            color: #f7bc7c;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 3px solid #f7bc7c;
+            transition: 0.3s;
+            box-shadow: 0 4px 0px #f7bc7c;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0px #f7bc7c;
+        }
+
+        /* Decoración de brillos */
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+        }
+        .s1 { top: -10px; left: -10px; }
+        .s2 { bottom: -10px; right: -10px; }
+
+    </style>
+</head>
+<body>
+
+    <h1>💎 Mi Colección de Rocas 💎</h1>
+
+    <div class="collection-container">
+        
+        <!-- Pareja 1: michi y hggb -->
+        <div class="rock-pair-section">
+            <div class="images-row">
+                <img src="michi.png" alt="Roca Michi" class="rock-img">
+                <img src="hggb.png" alt="Roca hggb" class="rock-img">
+            </div>
+            <div class="description-box">
+                <span class="sparkle s1">✨</span>
+                <p>Esta es mi pareja favorita. Michi siempre está acompañada de su roca especial hggb. ¡Tienen colores que combinan perfecto!</p>
+                <span class="sparkle s2">✨</span>
+            </div>
+        </div>
+
+        <!-- Pareja 2: Rocky y jhhh -->
+        <div class="rock-pair-section">
+            <div class="images-row">
+                <img src="Meet Rocky my pet rock 😆 #minions.jpg" alt="Rocky" class="rock-img">
+                <img src="jhhh.png" alt="Roca jhhh" class="rock-img">
+            </div>
+            <div class="description-box">
+                <span class="sparkle s1">✨</span>
+                <p>Aquí está Rocky, mi roca mascota inspirada en los Minions, junto a jhhh. Son las rocas más divertidas de toda mi colección.</p>
+                <span class="sparkle s2">✨</span>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-link">⬅️ Regresar al Jardín</a>
+
+</body>
+</html>
